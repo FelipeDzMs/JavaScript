@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+body{
+    margin: 0;
+}
+
+.contenedorPrincipal{
+    /* background-color: red; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contendorCartas{
+    /* background-color: blue; */
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+}
+
+.carta{
+    height: 80vh;
+    width: 5em;
+    border-radius: 50px;
+    margin: 0 15px;
+    display: flex;
+    align-items: end;
+    flex: 0.5;
+    transition: flex 1.3s ease;
+}
+
+.carta.activo {
+    flex: 5;
+}
+
+.carta.activo h3{
+    transition: opacity 1.3s 1s ease-in-out;
+    opacity: 1;
+}
+
+h3{
+    font-family: 'Muli', sans-serif;
+    padding: 0.5em 1em;
+    font-size: 20px;
+    color: aliceblue;
+    text-shadow: 1px 1px 2px black;
+    opacity: 0;
+}
+

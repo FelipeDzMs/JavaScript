@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* cuepo (fondo) */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #333;
+    /* background-color: #fafafa; */
+    color: #222;
+    overflow-x: hidden;
+    /*ocultar elementos que sobrepasen horizontalmente (eje x) el body*/
+    margin: 0;
+}
+
+/* contenedor principal */
+.contenedor {
+    background-color: #fafafa;
+    transform-origin: 0px 0px;/*x & y*/
+    /*determinamos punto de origen para realizar la tranformacion (en este elemento se va a rotar desde la esquina superior izquierda)*/
+    transition: transform 0.5s linear;
+    /*transicion de "transform 👆, usamos linear para que el movimiento sea constante, casi mecanico*/
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+    /* clase que se aplica cuando se oprime boton menu */
+    .contenedor.mostrar-nav{
+        /* transform-origin: top left; */
+        transform: rotate(-20deg);/*CAMBIAR PARA QUE CALCULE EN JS*/
+        filter: blur(0.1rem);
+    }
+
+/* boton menu desplegable  */
+.circulo-contenedor{
+    position: fixed;
+    /* lo ubicamos para que se vea el circulo (como 1/4 de luna) */
+    top: -100px;
+    left: -100px;
+    z-index: 1000;
+}
+
+/* circulo (boton) */
+.circulo{
+    position: sticky;
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;/*aplicamos transicion a la transformacion*/
+}
+
+    /* clase que se aplica cuando se oprime el ciculo (menu) */
+    .circulo.mostrar-nav{
+        transform: rotate(-90deg);
+    }
+
+/* ESTILO PARA LOS BOTONES (CERRAR Y ABRIR) */
+.circulo button{
+    cursor: pointer;
+    position: absolute;/*se vera uno encima del otro*/
+    /* posicion para los botones */
+    top: 50%;
+    left: 50%;
+    height: 100px; /*centar icono del boton*/
+    background: transparent;
+    border: 0;/*sin borde*/
+    /* tamaño icono */
+    font-size: 26px;
+    color: #fff;
+}
+    /* quitar contorno del elemento cuando se hace focus */
+    .circulo button:focus{
+        outline: none;
+    }
+
+    /* ubicacion del boton abrir (para que se vea en pantalla */
+    .circulo button#abrir{
+        left: 60%;
+    }
+
+    /* unicacion del boton cerrar (para que se vea unicamente cuando se despliega el menu */
+    .circulo button#cerrar{
+        top: 60%;
+        transform-origin: top left;/*punto para que se tranforme*/
+        transform: rotate(90deg);/*lo rota desde ese punto para que no se vea en pantalla*/
+    }
+
+/* movimiento del contenedor y botones de navegacion */
+.contenedor.mostrar-nav + nav li{
+    transform: translateX(0); /*se cambiara para que se pueda ver los botones de navegacion*/
+    transition: 0.3s; /*se da un delay para que se pueda ver mejor la animacion*/
+}
+
+/* ESTILOS BOTONES DE NAVEGACION */
+/*posicion de la barra de navegacion*/
+nav{
+    position: fixed;/*posicionamos de manera fija respecto a la ventana del navegador*/
+    bottom: 40px; /*lo dejamos a 40px de la parte de abajo*/
+    left: 0;/**/
+    z-index: 1000;/*estara encima de todo*/
+}
+
+/* quitar estilos  */
+nav ul{
+    list-style-type: none; /*quitamos el estilo del tipo de lista (quitar puntos)*/
+    padding-left: 30px;
+}
+
+/* tamaño y margen de los iconos */
+nav ul li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* estilo y posicion de los elementos del ul (li) */
+nav ul li{
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+}
+
+/* margen y posicion del segundo hijo del ul (LINK: ABOUT) */
+nav ul li + li{
+    margin-left: 15px;
+    transform: translateX(-150%);
+}
+
+/* margen del tercer hijo del ul (LINK: CONTACT) */
+nav ul li + li + li{
+    margin-left: 30px;
+    transform: translateX(-200%);
+}
+
+/* estilos para los links del nav */
+nav a{
+    text-decoration: none;
+    color: #fafafa;
+    transition: all 0.5s;/*transicion suave para todos los estilos de este elementos*/
+}
+
+nav a:hover{
+    color: #ff7979;
+    font-weight: bold;
+}
+
+/* ESTILO PARA EL CONTENIDO DEL ARTICULO */
+/*contenedor*/
+.contenido{
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/*titlulo 1*/
+.contenido h1{
+    margin: 0;
+}
+
+/*imagen*/
+.contenido img{
+    max-width: 100%;
+}
+
+/*texto small*/
+.contenido small{
+    color: #555;
+    font-style: italic;
+}
+
+.contenido p{
+    color: #333;
+    line-height: 1.5;/*espacio entre lineas*/
+}
+
+.contenedor .contenido{
+    scroll-behavior: auto;
+}
